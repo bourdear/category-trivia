@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<meta charset="utf-8">
+<head>
+    <title>Category Trivia</title>
+</head>
+<body>
+    <div class="main">
+        <h1 class="title-class"><span>Category</span> Trivia</h1>
+        <h2 class="explanation">Welcome to Category Trivia! Pick a category and click "Play" to begin!</h2>
+        <h2 id="final-text" class="explanation hide"></h2>
+        <div id="dropdown-div"></div>
+            <label for="category" class="dropdown">Choose a category: </label>
+            <select name="category" class="dropdown">
+                <option value="animals" class="dropdown">Animals</option>
+                <option value="art" class="dropdown" selected="selected">Art</option>
+                <option value="film" class="dropdown">Film</option>
+                <option value="history" class="dropdown">History</option>
+                <option value="music" class="dropdown">Music</option>
+                <option value="mythology" class="dropdown">Mythology</option>
+                <option value="science" class="dropdown">Science</option>   
+            </select>
+        </div>    
+        <div id="game-div" class="hide">
+            <p>Question Number: <span id="question-number"></span></p>
+            <h3 id="question"></h3>
+            <div class="answer-div">
+                <p id="answer-1" class="answers"></p>
+            </div>
+            <div class="answer-div">
+                <p id="answer-2" class="answers"></p>
+            </div>
+            <div class="answer-div">
+                <p id="answer-3" class="answers"></p>
+            </div>
+            <div class="answer-div">
+                <p id="answer-4" class="answers"></p>
+            </div>
+            <h3 id="correct-status" class="hide"></h3>
+        </div>
+        <div id="button-div">
+            <input id="start-button" type="submit" value="Play" class="buttons">
+            <input id="next-button" type="submit" value="Next Question" class="buttons hide">
+            <input id="play-again-button" type="submit" value="Play Again" class="buttons hide">
+        </div>
+        <div id="score-div" class="hide">
+            <label class="scoring">Score</label>
+            <h3 id="score"></h3>
+        </div>
+        <div id="high-score-div" class="hide">
+            <label class="scoring">High Score</label>
+            <h3 id="high-score"></h3>
+        </div>
+    </div>
+</body>
+</html>

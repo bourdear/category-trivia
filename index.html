@@ -3,14 +3,15 @@
 <meta charset="utf-8">
 <head>
     <title>Category Trivia</title>
+    <link rel="stylesheet" href="styles/style.css">
 </head>
 <body>
     <div class="main">
-        <h1 class="title-class"><span>Category</span> Trivia</h1>
-        <h2 class="explanation">Welcome to Category Trivia! Pick a category and click "Play" to begin!</h2>
-        <h2 id="final-text" class="explanation hide"></h2>
-        <div id="dropdown-div">
-            <label for="category" class="dropdown">Choose a category: </label>
+        <h1 class="title-class main-items"><span>Category</span> Trivia</h1>
+        <h2 class="explanation main-items">Welcome to Category Trivia! Pick a category and click "Play" to begin!</h2>
+        <h2 id="final-text" class="explanation hide main-items"></h2>
+        <div id="dropdown-div" class="main-items">
+            <label for="category" id="dropdown-label" class="dropdown">Choose a category: </label>
             <select name="category" class="dropdown">
                 <option value="animals" class="dropdown">Animals</option>
                 <option value="art" class="dropdown" selected="selected">Art</option>

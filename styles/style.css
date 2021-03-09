@@ -16,12 +16,30 @@ body {
     background: #84B8F0;
 }
 
-.main {
+.main{
+    height: 100%;
+}
+
+.main, #game-div {
     display: flex;
     flex-wrap: wrap;
     flex-direction: column;
     align-items: center;
+}
+
+.answer-div {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
     height: 100%;
+    padding: 5px;
+    margin: 5px;
+    border: 5px solid black;
+    width: 40vw;
+    height: 10vh;
+    background: #F0BA9C;
+    font-size: 1.5em;
 }
 
 .title-class {
@@ -61,4 +79,8 @@ background: #D99582;
 
 .hide {
     display: none;
+}
+
+.show {
+    display: initial;
 }

@@ -7,10 +7,10 @@
 </head>
 <body>
     <div class="main">
-        <h1 class="title-class main-items"><span id="trivia-type">Category</span> Trivia</h1>
-        <h2 class="explanation main-items">Welcome to Category Trivia! Pick a category and click "Play" to begin!</h2>
-        <h2 id="final-text" class="explanation hide main-items"></h2>
-        <div id="dropdown-div" class="main-items">
+        <h1 class="title-class"><span id="trivia-type" class="hide game-group"></span><span class="first-group">Category</span> Trivia</h1>
+        <h2 class="explanation main-items first-group">Welcome to Category Trivia! Pick a category and click "Play" to begin!</h2>
+        <h2 id="final-text" class="explanation hide main-items first-group"></h2>
+        <div id="dropdown-div" class="main-items first-group">
             <label for="category" id="dropdown-label" class="dropdown">Choose a category: </label>
             <select name="category"  id="categories" class="dropdown">
                 <option value="animals" class="dropdown">Animals</option>
@@ -22,25 +22,25 @@
                 <option value="science" class="dropdown">Science</option>   
             </select>
         </div>    
-        <div id="game-div" class="hide">
-            <p>Question Number: <span id="question-number"></span></p>
-            <h3 id="question"></h3>
-            <div class="answer-div">
-                <p id="answer-1" class="answers"></p>
+        <div id="game-div" class="hide game-group">
+            <p class="hide game-group">Question <span id="question-number">1</span></p>
+            <h3 id="question" class="hide game-group">Question Placeholder</h3>
+            <div class="answer-div hide game-group">
+                <p id="answer-1" class="answers">Answer 1 placeholder.</p>
             </div>
-            <div class="answer-div">
-                <p id="answer-2" class="answers"></p>
+            <div class="answer-div hide game-group">
+                <p id="answer-2" class="answers">Answer 2 placeholder.</p>
             </div>
-            <div class="answer-div">
-                <p id="answer-3" class="answers"></p>
+            <div class="answer-div hide game-group">
+                <p id="answer-3" class="answers">Answer 3 placeholder.</p>
             </div>
-            <div class="answer-div">
-                <p id="answer-4" class="answers"></p>
+            <div class="answer-div hide game-group">
+                <p id="answer-4" class="answers">Answer 4 placeholder.</p>
             </div>
-            <h3 id="correct-status" class="hide"></h3>
+            <h3 id="correct-status"></h3>
         </div>
         <div id="button-div">
-            <input id="start-button" type="submit" value="Play" class="buttons">
+            <input id="start-button" type="submit" value="Play" class="buttons first-group">
             <input id="next-button" type="submit" value="Next Question" class="buttons hide">
             <input id="play-again-button" type="submit" value="Play Again" class="buttons hide">
         </div>

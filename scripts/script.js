@@ -9,6 +9,8 @@ const cache = {
     playButton: document.getElementById('start-button'), 
     categories: document.getElementById('categories'),
     triviaType: document.getElementById('trivia-type'),
+    firstGroup: document.querySelectorAll('.first-group'),
+    gameGroup: document.querySelectorAll('.game-group')
 }
 
 //Gets the dropdown value.
@@ -46,4 +48,15 @@ cache.categories.addEventListener('change', function() {
             cache.triviaType.innerHTML = 'Science';
             break;
     }
+});
+
+if (dropdown == null) {
+    api_url = 'https://opentdb.com/api/php?amount=20&category=25&type=multiple';
+    cache.triviaType.innerHTML = 'Art';
+}
+
+cache.playButton.addEventListener('click', () => {
+    cache.firstGroup.forEach(element => element.classList.add('hide'));
+    cache.gameGroup.forEach(element => element.classList.add('show'));
+    cache.gameGroup.forEach(element => element.classList.remove('hide'));
 });

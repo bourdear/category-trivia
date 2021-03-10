@@ -21,36 +21,40 @@
                 <option value="mythology" class="dropdown">Mythology</option>
                 <option value="science" class="dropdown">Science</option>   
             </select>
-        </div>    
-        <div id="game-div" class="hide game-group">
-            <p class="hide game-group">Question <span id="question-number">1</span></p>
-            <h3 id="question" class="hide game-group">Question Placeholder</h3>
-            <div class="answer-div hide game-group">
-                <p id="answer-1" class="answers">Answer 1 placeholder.</p>
+            <div class="start-button-div first-group">
+                <input id="start-button" type="submit" value="Play" class="buttons first-group">
+            </div>    
+            </div> 
+        <div id="game-div" class="hide game-group">   
+            <div id="score-div" class="hide game-group">
+                <label class="scoring hide game-group"><span class="score-span">Score</span></label>
+                <h3 id="score"></h3>
             </div>
-            <div class="answer-div hide game-group">
-                <p id="answer-2" class="answers">Answer 2 placeholder.</p>
+            <div id="game-parent" class="hide game-group">
+                <p class="hide game-group">Question <span id="question-number">1</span></p>
+                <h3 id="question" class="hide game-group">Question Placeholder</h3>
+                <div class="answer-div hide game-group">
+                    <p id="answer-1" class="answers">Answer 1 placeholder.</p>
+                </div>
+                <div class="answer-div hide game-group">
+                    <p id="answer-2" class="answers">Answer 2 placeholder.</p>
+                </div>
+                <div class="answer-div hide game-group">
+                    <p id="answer-3" class="answers">Answer 3 placeholder.</p>
+                </div>
+                <div class="answer-div hide game-group">
+                    <p id="answer-4" class="answers">Answer 4 placeholder.</p>
+                </div>
+                <h3 id="correct-status"></h3>
             </div>
-            <div class="answer-div hide game-group">
-                <p id="answer-3" class="answers">Answer 3 placeholder.</p>
+            <div id="button-div">
+                <input id="next-button" type="submit" value="Next Question" class="buttons hide">
+                <input id="play-again-button" type="submit" value="Play Again" class="buttons hide">
             </div>
-            <div class="answer-div hide game-group">
-                <p id="answer-4" class="answers">Answer 4 placeholder.</p>
+            <div id="high-score-div" class="hide game-group">
+                <label class="scoring hide game-group"><span class="score-span">High Score</span></label>
+                <h3 id="high-score"></h3>
             </div>
-            <h3 id="correct-status"></h3>
-        </div>
-        <div id="button-div">
-            <input id="start-button" type="submit" value="Play" class="buttons first-group">
-            <input id="next-button" type="submit" value="Next Question" class="buttons hide">
-            <input id="play-again-button" type="submit" value="Play Again" class="buttons hide">
-        </div>
-        <div id="score-div" class="hide">
-            <label class="scoring">Score</label>
-            <h3 id="score"></h3>
-        </div>
-        <div id="high-score-div" class="hide">
-            <label class="scoring">High Score</label>
-            <h3 id="high-score"></h3>
         </div>
     </div>
     <script src="scripts/script.js"></script>

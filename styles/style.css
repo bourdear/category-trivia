@@ -33,6 +33,7 @@ body {
     justify-content: center;
 }
 
+
 .main, #game-parent {
     display: flex;
     flex-wrap: nowrap;
@@ -90,28 +91,33 @@ body {
     transition-delay: 3ms;
 }
 .buttons:hover {
-cursor: pointer;
-background: #D99582;
+    cursor: pointer;
+    background: #D99582;
 }
 
 .scoring {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    justify-content: space-evenly;
     background: white;
+    font-size: 1.5em;
     width: 15vw;
     height: 20vw;
-    border: 5px solid black;
+    border: 5px solid black;  
+    margin: auto;
+}
+
+.score-number {
+    display: block;
+}
+
+label {
+    padding-top: 1rem;
 }
 
 .score-span {
     display: block;
-    text-align: center;
-    margin-top: 20px;
-}
-
-#score-div, #high-score-div {
-    display: flex;
-    align-items: center;
-    background: yellow;
-    margin: auto;
 }
 
 .main-items {
@@ -121,7 +127,7 @@ background: #D99582;
 .buttons {
     background-color: #F0BA9C;
     height: 3rem;
-    width: 5rem;
+    width: 12rem;
     border: 3px solid black;
     margin-top: 2rem;
 }
@@ -132,4 +138,8 @@ background: #D99582;
 
 .show {
     display: initial;
+}
+
+.show-flex {
+    display: flex;
 }

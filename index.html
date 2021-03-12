@@ -26,9 +26,9 @@
             </div>    
             </div> 
         <div id="game-div" class="hide game-group">   
-            <div id="score-div" class="hide game-group">
-                <label class="scoring hide game-group"><span class="score-span">Score</span></label>
-                <h3 id="score"></h3>
+            <div id="score-div" class="scoring hide flex-items">
+                <label class="hide game-group"><span class="score-span">Score</span></label>
+                <h3 id="score" class="hide game-group score-number">0</h3>
             </div>
             <div id="game-parent" class="hide game-group">
                 <p class="hide game-group">Question <span id="question-number">1</span></p>
@@ -47,14 +47,14 @@
                 </div>
                 <h3 id="correct-status"></h3>
             </div>
-            <div id="button-div">
-                <input id="next-button" type="submit" value="Next Question" class="buttons hide">
-                <input id="play-again-button" type="submit" value="Play Again" class="buttons hide">
+            <div id="high-score-div" class="scoring hide flex-items">
+                <label class="hide game-group"><span class="score-span">High Score</span></label>
+                <h3 id="high-score" class="hide game-group score-number">0</h3>
             </div>
-            <div id="high-score-div" class="hide game-group">
-                <label class="scoring hide game-group"><span class="score-span">High Score</span></label>
-                <h3 id="high-score"></h3>
-            </div>
+        </div>
+        <div id="button-div">
+            <input id="next-button" type="submit" value="Next Question" class="buttons hide">
+            <input id="play-again-button" type="submit" value="Play Again" class="buttons hide">
         </div>
     </div>
     <script src="scripts/script.js"></script>

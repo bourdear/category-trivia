@@ -4,9 +4,9 @@ let questionNumber = 0;
 let score = 0;
 let highScore = 0;
 let dropdown;
-let response;
-let data;
 let array;
+let correctAnswer;
+let correctAnswerDiv = document.createElement('div');
 
 
 const cache = {
@@ -18,6 +18,7 @@ const cache = {
     flexItems: document.querySelectorAll('.flex-items'),
     answers: document.querySelectorAll('.answers'),
     nextButton: document.getElementById('next-button'),
+    questionSpan: document.getElementById('question-number'),
     question: document.getElementById('question'), 
     answer1: document.getElementById('answer-1'),
     answer2: document.getElementById('answer-2'),
@@ -86,27 +87,61 @@ const changeQuestionText = (results, question, correct_answer, incorrect_answers
     cache.answer2.innerHTML = array[1];
     cache.answer3.innerHTML = array[2];
     cache.answer4.innerHTML = array[3];
-    questionNumber++;
+}
+
+//Displays question number.
+const displayQuestNumber = () => {
+    cache.questionSpan.innerHTML = questionNumber + 1;
+}
+
+const hideNextButton = () => {
+    cache.nextButton.classList.add('hide');
+    cache.nextButton.classList.remove('show');
+    getQuestion();
+}
+
+//Changes the background color of the answer divs corresponding with the correct status.
+const showAnswer = (param) => {
+    param.forEach(function(element) {
+        if (element.innerHTML == correctAnswerDiv.innerHTML) {
+            element.style.backgroundColor = '#6CE0A3';
+        } else {
+            element.style.backgroundColor = '#F0A29C';
+        }
+    });
 }
 
 //Pulls data from the API and pulls questions and answers.
 async function getQuestion() {
-    response = await fetch(api_url);
-    data = await response.json();
+    const response = await fetch(api_url);
+    const data = await response.json();
     const { results, question, correct_answer, incorrect_answers } = data;
     array = [results[questionNumber].correct_answer,
         results[questionNumber].incorrect_answers[0], 
         results[questionNumber].incorrect_answers[1],
         results[questionNumber].incorrect_answers[2]];
     shuffle(array);
+    displayQuestNumber();
     changeQuestionText(results, question, correct_answer, incorrect_answers);
     showGame();
+    correctAnswer = results[questionNumber].correct_answer;
+    correctAnswerDiv.innerHTML = correctAnswer;
+    questionNumber++;
+    
 }
 
 cache.playButton.addEventListener('click', () => {
     getQuestion();
 });
 
+//Moves onto next question.
+cache.nextButton.addEventListener('click', () => {
+    hideNextButton();
+    cache.answers.forEach(element => element.style.backgroundColor = '#F0BA9C')
+});
+
 cache.answers.forEach(element => element.addEventListener('click', () => {
-    cache.nextButton.style.display = 'initial';
+    showAnswer(cache.answers);
+    cache.nextButton.classList.add('show');
+    cache.nextButton.classList.remove('hide');
 }));

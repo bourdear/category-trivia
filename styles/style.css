@@ -24,8 +24,12 @@ body {
 #game-div {
     display: flex;
     flex-direction: row;
-    justify-content: space-around;
+    justify-content: space-evenly;
     width: 100%;
+}
+
+#question {
+    
 }
 
 .start-button-div {

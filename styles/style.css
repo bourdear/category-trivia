@@ -25,18 +25,15 @@ body {
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
+    align-items: center;
     width: 100%;
-}
-
-#question {
-    
+    height: 60%;
 }
 
 .start-button-div {
     display: flex;
     justify-content: center;
 }
-
 
 .main, #game-parent {
     display: flex;
@@ -47,12 +44,27 @@ body {
 
 #game-parent {
     margin: auto;
+    max-width: 50vw;
+    min-width: 50vw;
+    height: 100%;
+}
+
+#question-div {
+    display: flex;
+    justify-content: center;
+    min-height: 12vh;
+
+}
+
+#question {
+    word-wrap: break-word;
 }
 
 .answer-div {
     display: flex;
     align-items: center;
     justify-content: center;
+    text-align: center;
     margin: 5px;
     border: 5px solid black;
     width: 40vw;
@@ -118,10 +130,6 @@ body {
 
 label {
     padding-top: 1rem;
-}
-
-.score-span {
-    display: block;
 }
 
 .main-items {

@@ -23,7 +23,9 @@ const cache = {
     answer1: document.getElementById('answer-1'),
     answer2: document.getElementById('answer-2'),
     answer3: document.getElementById('answer-3'),
-    answer4: document.getElementById('answer-4')
+    answer4: document.getElementById('answer-4'),
+    correctStatus: document.getElementById('correct-status'),
+    scoreSpan: document.getElementById('score-span')
 }
 
 //Gets the dropdown value.
@@ -94,15 +96,29 @@ const displayQuestNumber = () => {
     cache.questionSpan.innerHTML = questionNumber + 1;
 }
 
+const displayScore = () => {
+    cache.scoreSpan.innerHTML = `${score}`;
+}
 const hideNextButton = () => {
     cache.nextButton.classList.add('hide');
     cache.nextButton.classList.remove('show');
     getQuestion();
 }
 
+const checkAnswer = (e) => {
+    let text = e.target.innerHTML;
+    if (text == correctAnswerDiv.innerHTML) {
+        score++;
+        cache.correctStatus.innerHTML = 'Correct!';
+        displayScore();
+    } else {
+        cache.correctStatus.innerHTML = 'Incorrect!';
+        displayScore();
+    }
+}
 //Changes the background color of the answer divs corresponding with the correct status.
-const showAnswer = (param) => {
-    param.forEach(function(element) {
+const showAnswer = (classGroup) => {
+    classGroup.forEach(function(element) {
         if (element.innerHTML == correctAnswerDiv.innerHTML) {
             element.style.backgroundColor = '#6CE0A3';
         } else {
@@ -137,11 +153,15 @@ cache.playButton.addEventListener('click', () => {
 //Moves onto next question.
 cache.nextButton.addEventListener('click', () => {
     hideNextButton();
-    cache.answers.forEach(element => element.style.backgroundColor = '#F0BA9C')
+    cache.answers.forEach(element => element.style.backgroundColor = '#F0BA9C');
+    cache.correctStatus.innerHTML = '';
 });
 
+//When clicked, changes colors of the answer divs corresponding to their correct status.
 cache.answers.forEach(element => element.addEventListener('click', () => {
     showAnswer(cache.answers);
     cache.nextButton.classList.add('show');
     cache.nextButton.classList.remove('hide');
 }));
+
+cache.answers.forEach(element => element.addEventListener('click', checkAnswer));

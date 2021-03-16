@@ -27,7 +27,7 @@ body {
     justify-content: space-evenly;
     align-items: center;
     width: 100%;
-    height: 60%;
+    height: 50%;
 }
 
 .start-button-div {
@@ -43,6 +43,7 @@ body {
 }
 
 #game-parent {
+    justify-content: center;
     margin: auto;
     max-width: 50vw;
     min-width: 50vw;
@@ -52,8 +53,9 @@ body {
 #question-div {
     display: flex;
     justify-content: center;
+    align-items: center;
     min-height: 12vh;
-
+    width: 60%;
 }
 
 #question {
@@ -117,7 +119,7 @@ body {
     text-align: center;
     justify-content: space-evenly;
     background: white;
-    font-size: 1.5em;
+    font-size: 2em;
     width: 15vw;
     height: 20vw;
     border: 5px solid black;  
@@ -126,6 +128,12 @@ body {
 
 .score-number {
     display: block;
+}
+
+#correct-status {
+    visibility: hidden;
+    position: inherit;
+    font-size: 2em;
 }
 
 label {
@@ -142,6 +150,14 @@ label {
     width: 12rem;
     border: 3px solid black;
     margin-top: 2rem;
+}
+
+.make-visible {
+    opacity = 1;
+}
+
+.make-invisible {
+    opacity = 0;
 }
 
 .hide {

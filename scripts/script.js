@@ -13,6 +13,7 @@ const cache = {
     playButton: document.getElementById('start-button'), 
     categories: document.getElementById('categories'),
     triviaType: document.getElementById('trivia-type'),
+    titleClass: document.querySelector('.title-class'),
     firstGroup: document.querySelectorAll('.first-group'),
     gameGroup: document.querySelectorAll('.game-group'),
     flexItems: document.querySelectorAll('.flex-items'),
@@ -25,7 +26,10 @@ const cache = {
     answer3: document.getElementById('answer-3'),
     answer4: document.getElementById('answer-4'),
     correctStatus: document.getElementById('correct-status'),
-    scoreSpan: document.getElementById('score-span')
+    scoreSpan: document.getElementById('score-span'),
+    finalMessage: document.getElementById('final-message'),
+    finalGroup: document.querySelectorAll('.final-group'),
+    playAgainButton: document.getElementById('play-again-button')
 }
 
 //Gets the dropdown value.
@@ -107,11 +111,13 @@ const hideNextButton = () => {
 
 const checkAnswer = (e) => {
     let text = e.target.innerHTML;
-    if (text == correctAnswerDiv.innerHTML) {
+    if (text == correctAnswerDiv.innerHTML && questionNumber < 20) {
         score++;
+        cache.correctStatus.style.visibility = 'visible';
         cache.correctStatus.innerHTML = 'Correct!';
         displayScore();
-    } else {
+    } else if (questionNumber < 20) {
+        cache.correctStatus.style.visibility = 'visible';
         cache.correctStatus.innerHTML = 'Incorrect!';
         displayScore();
     }
@@ -125,6 +131,20 @@ const showAnswer = (classGroup) => {
             element.style.backgroundColor = '#F0A29C';
         }
     });
+}
+//Hides game and displays final message.
+const endMessage = () => {
+    if (questionNumber === 20) {
+        cache.gameGroup.forEach(element => element.classList.add('hide'));
+        cache.gameGroup.forEach(element => element.classList.remove('show'));
+        cache.flexItems.forEach(element => element.classList.add('hide'));
+        cache.flexItems.forEach(element => element.classList.remove('show-flex'));
+        cache.finalGroup.forEach(element => element.classList.add('show'));
+        cache.finalGroup.forEach(element => element.classList.remove('hide'));
+        cache.correctStatus.style.visibility = 'hidden';
+        cache.titleClass.innerHTML = 'GAME OVER';
+        cache.finalMessage.innerHTML = `Your final score is ${score}! Would you like to play again?`;
+    }
 }
 
 //Pulls data from the API and pulls questions and answers.
@@ -154,14 +174,20 @@ cache.playButton.addEventListener('click', () => {
 cache.nextButton.addEventListener('click', () => {
     hideNextButton();
     cache.answers.forEach(element => element.style.backgroundColor = '#F0BA9C');
-    cache.correctStatus.innerHTML = '';
+    cache.correctStatus.style.visibility = 'hidden';
 });
 
 //When clicked, changes colors of the answer divs corresponding to their correct status.
 cache.answers.forEach(element => element.addEventListener('click', () => {
     showAnswer(cache.answers);
-    cache.nextButton.classList.add('show');
-    cache.nextButton.classList.remove('hide');
+    endMessage();
+    if (questionNumber < 20) {
+        cache.nextButton.classList.add('show');
+        cache.nextButton.classList.remove('hide');
+    }
 }));
 
 cache.answers.forEach(element => element.addEventListener('click', checkAnswer));
+cache.playAgainButton.addEventListener('click', () => {
+    document.location.reload();
+})

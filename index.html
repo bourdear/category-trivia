@@ -9,7 +9,8 @@
     <div class="main">
         <h1 class="title-class"><span id="trivia-type" class="hide game-group"></span><span class="first-group">Category</span> Trivia</h1>
         <h2 class="explanation main-items first-group">Welcome to Category Trivia! Pick a category and click "Play" to begin!</h2>
-        <h2 id="final-text" class="explanation hide main-items first-group"></h2>
+        <h2 id="final-message" class="explanation hide main-items final-group"></h2>
+        <input id="play-again-button" type="submit" value="Play Again" class="buttons hide final-group">
         <div id="dropdown-div" class="main-items first-group">
             <label for="category" id="dropdown-label" class="dropdown">Choose a category: </label>
             <select name="category"  id="categories" class="dropdown">
@@ -24,6 +25,9 @@
             <div class="start-button-div first-group">
                 <input id="start-button" type="submit" value="Play" class="buttons first-group">
             </div>    
+            </div>
+            <div id="question-div">
+                <h3 id="question" class="hide game-group">Question Placeholder</h3>
             </div> 
         <div id="game-div" class="hide game-group">   
             <div id="score-div" class="scoring hide flex-items">
@@ -32,9 +36,6 @@
             </div>
             <div id="game-parent" class="hide game-group">
                 <p class="hide game-group">Question <span id="question-number">1</span></p>
-                <div id="question-div">
-                    <h3 id="question" class="hide game-group">Question Placeholder</h3>
-                </div>
                 <div class="answer-div hide game-group">
                     <p id="answer-1" class="answers">Answer 1 placeholder.</p>
                 </div>
@@ -56,7 +57,6 @@
         <h3 id="correct-status"></h3>
         <div id="button-div">
             <input id="next-button" type="submit" value="Next Question" class="buttons hide">
-            <input id="play-again-button" type="submit" value="Play Again" class="buttons hide">
         </div>
     </div>
     <script src="scripts/script.js"></script>

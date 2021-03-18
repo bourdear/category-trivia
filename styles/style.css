@@ -35,6 +35,21 @@ body {
     justify-content: center;
 }
 
+#start-button {
+    height: 3rem ;
+    width: 5.5rem;
+}
+
+#next-button {
+    height: 3rem;
+    width: 12rem;
+}
+
+#play-again-button {
+    height: 4.5rem;
+    width: 9rem;
+}
+
 .main, #game-parent {
     display: flex;
     flex-wrap: nowrap;
@@ -54,12 +69,13 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: 12vh;
+    min-height: 13vh;
     width: 60%;
 }
 
 #question {
     word-wrap: break-word;
+    font-size: 1.5em;
 }
 
 .answer-div {
@@ -85,8 +101,10 @@ body {
 }
 
 .title-class {
-    margin-top: 4rem;
+    margin-top: 20vh;
+    margin-bottom: 4vh;
     font-size: 4rem;
+    line-height: 60px;
     width: 100%;
     text-align: center;
 }
@@ -130,10 +148,14 @@ body {
     display: block;
 }
 
+#correct-status-div {
+    height: 5vh;
+}
+
 #correct-status {
     visibility: hidden;
-    position: inherit;
     font-size: 2em;
+    margin: 0;
 }
 
 label {
@@ -146,8 +168,6 @@ label {
 
 .buttons {
     background-color: #F0BA9C;
-    height: 3rem;
-    width: 12rem;
     border: 3px solid black;
     margin-top: 2rem;
 }

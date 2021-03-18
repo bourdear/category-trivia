@@ -84,6 +84,7 @@ const showGame = () => {
     cache.gameGroup.forEach(element => element.classList.remove('hide'));
     cache.flexItems.forEach(element => element.classList.add('show-flex'));
     cache.flexItems.forEach(element => element.classList.remove('hide'));
+    cache.titleClass.style.marginTop = '4rem';
 }
 
 //Changes the text of the questions and answers.
@@ -116,7 +117,7 @@ const checkAnswer = (e) => {
         cache.correctStatus.style.visibility = 'visible';
         cache.correctStatus.innerHTML = 'Correct!';
         displayScore();
-    } else if (questionNumber < 20) {
+    } else {
         cache.correctStatus.style.visibility = 'visible';
         cache.correctStatus.innerHTML = 'Incorrect!';
         displayScore();
@@ -135,15 +136,18 @@ const showAnswer = (classGroup) => {
 //Hides game and displays final message.
 const endMessage = () => {
     if (questionNumber === 20) {
-        cache.gameGroup.forEach(element => element.classList.add('hide'));
-        cache.gameGroup.forEach(element => element.classList.remove('show'));
-        cache.flexItems.forEach(element => element.classList.add('hide'));
-        cache.flexItems.forEach(element => element.classList.remove('show-flex'));
-        cache.finalGroup.forEach(element => element.classList.add('show'));
-        cache.finalGroup.forEach(element => element.classList.remove('hide'));
-        cache.correctStatus.style.visibility = 'hidden';
-        cache.titleClass.innerHTML = 'GAME OVER';
-        cache.finalMessage.innerHTML = `Your final score is ${score}! Would you like to play again?`;
+        setTimeout(() => {
+            cache.gameGroup.forEach(element => element.classList.add('hide'));
+            cache.gameGroup.forEach(element => element.classList.remove('show'));
+            cache.flexItems.forEach(element => element.classList.add('hide'));
+            cache.flexItems.forEach(element => element.classList.remove('show-flex'));
+            cache.finalGroup.forEach(element => element.classList.add('show'));
+            cache.finalGroup.forEach(element => element.classList.remove('hide'));
+            cache.correctStatus.style.visibility = 'hidden';
+            cache.titleClass.innerHTML = 'GAME OVER';
+            cache.titleClass.style.marginTop = '30vh';
+            cache.finalMessage.innerHTML = `Your final score is ${score}! Would you like to play again?`;
+        }, 2000);    
     }
 }
 
@@ -190,4 +194,4 @@ cache.answers.forEach(element => element.addEventListener('click', () => {
 cache.answers.forEach(element => element.addEventListener('click', checkAnswer));
 cache.playAgainButton.addEventListener('click', () => {
     document.location.reload();
-})
+});

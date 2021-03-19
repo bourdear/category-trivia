@@ -10,7 +10,10 @@
         <h1 class="title-class"><span id="trivia-type" class="hide game-group"></span><span class="first-group">Category</span> Trivia</h1>
         <h2 class="explanation main-items first-group">Welcome to Category Trivia! Pick a category and click "Play" to begin!</h2>
         <h2 id="final-message" class="explanation hide main-items final-group"></h2>
-        <input id="play-again-button" type="submit" value="Play Again" class="buttons hide final-group">
+        <div id="final-buttons">
+            <input id="play-again-button" type="submit" value="Play Again" class="buttons hide final-group">
+            <input id="exit-button" type="submit" value="Exit" class="buttons hide final-group">
+        </div>
         <div id="dropdown-div" class="main-items first-group">
             <label for="category" id="dropdown-label" class="dropdown">Choose a category: </label>
             <select name="category"  id="categories" class="dropdown">

@@ -45,8 +45,8 @@ body {
     width: 12rem;
 }
 
-#play-again-button {
-    height: 4.5rem;
+#play-again-button, #exit-button {
+    height: 2.75rem;
     width: 9rem;
 }
 
@@ -170,6 +170,14 @@ label {
     background-color: #F0BA9C;
     border: 3px solid black;
     margin-top: 2rem;
+}
+
+#final-buttons {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 40%;
 }
 
 .make-visible {

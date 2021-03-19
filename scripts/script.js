@@ -3,6 +3,7 @@ let api_url = 'https://opentdb.com/api.php?amount=20&category=25&type=multiple';
 let questionNumber = 0;
 let score = 0;
 let highScore = 0;
+let saveScore;
 let dropdown;
 let array;
 let correctAnswer;
@@ -27,9 +28,11 @@ const cache = {
     answer4: document.getElementById('answer-4'),
     correctStatus: document.getElementById('correct-status'),
     scoreSpan: document.getElementById('score-span'),
+    highScoreNum: document.getElementById('high-score'),
     finalMessage: document.getElementById('final-message'),
     finalGroup: document.querySelectorAll('.final-group'),
-    playAgainButton: document.getElementById('play-again-button')
+    playAgainButton: document.getElementById('play-again-button'),
+    exitButton: document.getElementById('exit-button')
 }
 
 //Gets the dropdown value.
@@ -96,6 +99,14 @@ const changeQuestionText = (results, question, correct_answer, incorrect_answers
     cache.answer4.innerHTML = array[3];
 }
 
+//Gets high score
+const getScore = () => {
+    saveScore = localStorage.getItem('savedHighScore');
+    if (saveScore > highScore) {
+        highScore = saveScore;
+    }
+}
+
 //Displays question number.
 const displayQuestNumber = () => {
     cache.questionSpan.innerHTML = questionNumber + 1;
@@ -103,7 +114,12 @@ const displayQuestNumber = () => {
 
 const displayScore = () => {
     cache.scoreSpan.innerHTML = `${score}`;
+    cache.highScoreNum.innerHTML = `${highScore}`;
+    if (score > highScore) {
+        highScore = score;
+    }
 }
+
 const hideNextButton = () => {
     cache.nextButton.classList.add('hide');
     cache.nextButton.classList.remove('show');
@@ -147,6 +163,7 @@ const endMessage = () => {
             cache.titleClass.innerHTML = 'GAME OVER';
             cache.titleClass.style.marginTop = '30vh';
             cache.finalMessage.innerHTML = `Your final score is ${score}! Would you like to play again?`;
+            saveHighScore();
         }, 2000);    
     }
 }
@@ -163,11 +180,12 @@ async function getQuestion() {
     shuffle(array);
     displayQuestNumber();
     changeQuestionText(results, question, correct_answer, incorrect_answers);
+    getScore();
+    displayScore();
     showGame();
     correctAnswer = results[questionNumber].correct_answer;
     correctAnswerDiv.innerHTML = correctAnswer;
     questionNumber++;
-    
 }
 
 cache.playButton.addEventListener('click', () => {
@@ -191,7 +209,18 @@ cache.answers.forEach(element => element.addEventListener('click', () => {
     }
 }));
 
+//Saves high score.
+const saveHighScore = () => {
+    if (highScore > saveScore) {
+        localStorage.setItem('savedHighScore', highScore);
+    }
+}
+
 cache.answers.forEach(element => element.addEventListener('click', checkAnswer));
+
 cache.playAgainButton.addEventListener('click', () => {
     document.location.reload();
+});
+cache.exitButton.addEventListener('click', () => {
+    window.close();
 });

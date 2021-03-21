@@ -5,6 +5,7 @@ let score = 0;
 let highScore = 0;
 let saveScore;
 let dropdown;
+let data;
 let array;
 let correctAnswer;
 let correctAnswerDiv = document.createElement('div');
@@ -123,7 +124,7 @@ const displayScore = () => {
 const hideNextButton = () => {
     cache.nextButton.classList.add('hide');
     cache.nextButton.classList.remove('show');
-    getQuestion();
+    newQuestion();
 }
 
 const checkAnswer = (e) => {
@@ -168,10 +169,15 @@ const endMessage = () => {
     }
 }
 
-//Pulls data from the API and pulls questions and answers.
-async function getQuestion() {
+//Pulls data from the API.
+async function getJsonData() {
     const response = await fetch(api_url);
-    const data = await response.json();
+    data = await response.json();
+    newQuestion();
+}
+
+//Pulls questions and answers.
+const newQuestion = () => {
     const { results, question, correct_answer, incorrect_answers } = data;
     array = [results[questionNumber].correct_answer,
         results[questionNumber].incorrect_answers[0], 
@@ -189,7 +195,7 @@ async function getQuestion() {
 }
 
 cache.playButton.addEventListener('click', () => {
-    getQuestion();
+    getJsonData();
 });
 
 //Moves onto next question.

@@ -126,6 +126,7 @@ body {
     background:#D99582;
     transition-delay: 3ms;
 }
+
 .buttons:hover {
     cursor: pointer;
     background: #D99582;

@@ -139,17 +139,21 @@ const checkAnswer = (e) => {
         cache.correctStatus.innerHTML = 'Incorrect!';
         displayScore();
     }
+    cache.answers.forEach(element => element.removeEventListener('click', checkAnswer));
 }
+
 //Changes the background color of the answer divs corresponding with the correct status.
 const showAnswer = (classGroup) => {
     classGroup.forEach(function(element) {
         if (element.innerHTML == correctAnswerDiv.innerHTML) {
-            element.style.backgroundColor = '#6CE0A3';
+            element.parentNode.style.backgroundColor = '#6CE0A3';
         } else {
-            element.style.backgroundColor = '#F0A29C';
+            element.parentNode.style.backgroundColor = '#F0A29C';
         }
+        endMessage();
     });
 }
+
 //Hides game and displays final message.
 const endMessage = () => {
     if (questionNumber === 20) {
@@ -194,6 +198,15 @@ const newQuestion = () => {
     questionNumber++;
 }
 
+//Displays correct answer and next button.
+const displayAnsPlus = () => {
+    showAnswer(cache.answers);
+    if (questionNumber < 20) {
+        cache.nextButton.classList.add('show');
+        cache.nextButton.classList.remove('hide');
+    }
+}
+
 cache.playButton.addEventListener('click', () => {
     getJsonData();
 });
@@ -201,19 +214,13 @@ cache.playButton.addEventListener('click', () => {
 //Moves onto next question.
 cache.nextButton.addEventListener('click', () => {
     hideNextButton();
-    cache.answers.forEach(element => element.style.backgroundColor = '#F0BA9C');
+    cache.answers.forEach(element => element.parentNode.style.backgroundColor = '#F0BA9C');
+    cache.answers.forEach(element => element.addEventListener('click', checkAnswer));
     cache.correctStatus.style.visibility = 'hidden';
 });
 
 //When clicked, changes colors of the answer divs corresponding to their correct status.
-cache.answers.forEach(element => element.addEventListener('click', () => {
-    showAnswer(cache.answers);
-    endMessage();
-    if (questionNumber < 20) {
-        cache.nextButton.classList.add('show');
-        cache.nextButton.classList.remove('hide');
-    }
-}));
+cache.answers.forEach(element => element.addEventListener('click', displayAnsPlus));
 
 //Saves high score.
 const saveHighScore = () => {
@@ -227,6 +234,8 @@ cache.answers.forEach(element => element.addEventListener('click', checkAnswer))
 cache.playAgainButton.addEventListener('click', () => {
     document.location.reload();
 });
+
+//Closes tab if user clicks "Exit."
 cache.exitButton.addEventListener('click', () => {
     window.close();
 });

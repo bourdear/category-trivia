@@ -140,6 +140,7 @@ const checkAnswer = (e) => {
         displayScore();
     }
     cache.answers.forEach(element => element.removeEventListener('click', checkAnswer));
+    cache.answers.forEach(element => element.style.pointerEvents = 'none');
 }
 
 //Changes the background color of the answer divs corresponding with the correct status.
@@ -215,6 +216,7 @@ cache.playButton.addEventListener('click', () => {
 cache.nextButton.addEventListener('click', () => {
     hideNextButton();
     cache.answers.forEach(element => element.parentNode.style.backgroundColor = '#F0BA9C');
+    cache.answers.forEach(element => element.style.pointerEvents = 'auto');
     cache.answers.forEach(element => element.addEventListener('click', checkAnswer));
     cache.correctStatus.style.visibility = 'hidden';
 });

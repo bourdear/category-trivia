@@ -10,7 +10,6 @@ let array;
 let correctAnswer;
 let correctAnswerDiv = document.createElement('div');
 
-
 const cache = {
     playButton: document.getElementById('start-button'), 
     categories: document.getElementById('categories'),
@@ -70,18 +69,19 @@ cache.categories.addEventListener('change', function() {
             api_url = 'https://opentdb.com/api.php?amount=20&category=17&type=multiple';
             cache.triviaType.innerHTML = 'Science';
             break;
+        case null:
+            api_url = 'https://opentdb.com/api.php?amount=20&category=25&type=multiple';
+            cache.triviaType.innerHTML = 'Art';
+            break;
     }
 });
 
-if (dropdown == null) {
-    api_url = 'https://opentdb.com/api.php?amount=20&category=25&type=multiple';
-    cache.triviaType.innerHTML = 'Art';
-}
-
+//Randomizes items in the array.
 const shuffle = (array) => {
-    array.sort(() => Math.random() - 0.5)
+    array.sort(() => Math.random() - 0.5);
 }
 
+//Displays the game.
 const showGame = () => {
     cache.firstGroup.forEach(element => element.classList.add('hide'));
     cache.gameGroup.forEach(element => element.classList.add('show'));
@@ -100,7 +100,7 @@ const changeQuestionText = (results, question, correct_answer, incorrect_answers
     cache.answer4.innerHTML = array[3];
 }
 
-//Gets high score
+//Gets high score.
 const getScore = () => {
     saveScore = localStorage.getItem('savedHighScore');
     if (saveScore > highScore) {
@@ -108,11 +108,12 @@ const getScore = () => {
     }
 }
 
-//Displays question number.
+//Displays the question number.
 const displayQuestNumber = () => {
     cache.questionSpan.innerHTML = questionNumber + 1;
 }
 
+//Displays the score and highscore.
 const displayScore = () => {
     cache.scoreSpan.innerHTML = `${score}`;
     cache.highScoreNum.innerHTML = `${highScore}`;
@@ -121,12 +122,14 @@ const displayScore = () => {
     }
 }
 
+//Hides the "Next Question" button and gets a new question.
 const hideNextButton = () => {
     cache.nextButton.classList.add('hide');
     cache.nextButton.classList.remove('show');
     newQuestion();
 }
 
+//Compares the clicked div to the correct answer div. A "Correct" or "Incorrect" message is displayed on screen.
 const checkAnswer = (e) => {
     let text = e.target.innerHTML;
     if (text == correctAnswerDiv.innerHTML && questionNumber < 20) {
@@ -208,6 +211,14 @@ const displayAnsPlus = () => {
     }
 }
 
+//Saves high score.
+const saveHighScore = () => {
+    if (highScore > saveScore) {
+        localStorage.setItem('savedHighScore', highScore);
+    }
+}
+
+//Gets JSON data when the button is clicked.
 cache.playButton.addEventListener('click', () => {
     getJsonData();
 });
@@ -224,15 +235,10 @@ cache.nextButton.addEventListener('click', () => {
 //When clicked, changes colors of the answer divs corresponding to their correct status.
 cache.answers.forEach(element => element.addEventListener('click', displayAnsPlus));
 
-//Saves high score.
-const saveHighScore = () => {
-    if (highScore > saveScore) {
-        localStorage.setItem('savedHighScore', highScore);
-    }
-}
-
+//The answer is checked when any of the answer divs is clicked.
 cache.answers.forEach(element => element.addEventListener('click', checkAnswer));
 
+//The page is reloaded if the "Play Again" button is clicked.
 cache.playAgainButton.addEventListener('click', () => {
     document.location.reload();
 });

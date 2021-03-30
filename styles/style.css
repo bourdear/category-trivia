@@ -139,6 +139,8 @@ body {
     justify-content: space-evenly;
     background: white;
     font-size: 2em;
+    font-size: 3vw;
+    overflow: hidden;
     width: 15vw;
     height: 20vw;
     border: 5px solid black;  

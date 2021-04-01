@@ -40,6 +40,10 @@ body {
     width: 5.5rem;
 }
 
+#button-div {
+    min-height: 80px;
+}
+
 #next-button {
     height: 3rem;
     width: 12rem;
@@ -153,6 +157,9 @@ body {
 
 #correct-status-div {
     height: 5vh;
+    min-height: 40px;
+    padding: 5px;
+
 }
 
 #correct-status {
